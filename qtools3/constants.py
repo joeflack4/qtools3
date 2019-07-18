@@ -81,6 +81,7 @@ NAME = 'name'
 FORM_ID = 'form_id'
 FORM_TITLE = 'form_title'
 XML_ROOT = 'xml_root'
+SETTINGS_NAME = 'name'
 LOGGING = 'logging'
 
 ITEMSETS = 'itemsets.csv'

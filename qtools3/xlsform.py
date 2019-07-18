@@ -634,7 +634,7 @@ class Xlsform:
         return form_title
 
     def get_xml_root(self, pma):
-        xml_root = self.settings.get(constants.XML_ROOT, '')
+        xml_root = self.settings.get(constants.SETTINGS_NAME, '')
         if pma:
             if xml_root == '':
                 expected_xml_root = self.determine_xml_root(self.short_name)
