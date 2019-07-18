@@ -786,9 +786,9 @@ class Xlsform:
         inconsistent = has_save_instance ^ has_save_form
         if inconsistent:
             if has_save_instance:
-                m = '"{}" defines save_instance value but no save_form value'
+                m = '"{}" defines bind::save_instance value but no bind::save_form value'
             else:
-                m = '"{}" defines save_form value but no save_instance value'
+                m = '"{}" defines bind::save_form value but no bind::save_instance value'
             raise XlsformError(m.format(filename))
 
     def version_consistency(self):
@@ -809,7 +809,7 @@ class Xlsform:
         if len(version) > 1:
             m = ('"{}" has inconsistent version numbers among XLSForm '
                  'filename, XML filename, form_id, form_title, entries in '
-                 'save_form. Versions found: {}.')
+                 'bind::save_form. Versions found: {}.')
             m = m.format(self.path, ', '.join(version))
             raise XlsformError(m)
 

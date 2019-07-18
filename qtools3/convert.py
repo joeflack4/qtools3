@@ -191,7 +191,7 @@ def validate_xpaths(xlsforms, xforms):
             not_found = [True] * len(this_save_instance)
             for save_form in this_save_form:
                 if save_form not in form_ids:
-                    m = '"{}" defines save_form with non-existent form_id "{}"'
+                    m = '"{}" defines bind::save_form with non-existent form_id "{}"'
                     m = m.format(xlsform.path, save_form)
                     raise XformError(m)
                 else:
@@ -284,13 +284,13 @@ def check_hq_fq_headers(xlsforms):
     fq = [xlsform for xlsform in xlsforms if xlsform.xml_root == 'FRS']
     for h in hq:
         if not len(h.save_instance) > 1 or not len(h.save_form) > 1:
-            m = ('HQ ({}) does not define both "save_instance" and '
-                 '"save_form" columns and their values')
+            m = ('HQ ({}) does not define both "bind::save_instance" and '
+                 '"bind::save_form" columns and their values')
             m = m.format(h.short_file)
             raise XlsformError(m)
     for f in fq:
         if not len(f.delete_form) > 1:
-            m = 'FQ ({}) missing "delete_form" column and "true()" value'
+            m = 'FQ ({}) missing "bind::delete_form" column and "true()" value'
             m = m.format(f.short_file)
             raise XlsformError(m)
 
@@ -327,7 +327,7 @@ def check_save_form_match(xlsforms):
     for xlsform in xlsforms:
         save_form = xlsform.save_form
         if len(save_form) > 1:
-            m = ('"{}" has more than one save_form defined. Unpredictable '
+            m = ('"{}" has more than one bind::save_form defined. Unpredictable '
                  'behavior ahead!')
             m = m.format(xlsform.path)
             msg.append(m)
