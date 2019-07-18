@@ -754,7 +754,7 @@ class Xlsform:
 
     @staticmethod
     def no_xml_root(filename, expected_xml_root):
-        msg = ('"%s" does not have an "xml_root" defined in the settings tab. '
+        msg = ('"%s" does not have a "name" defined in the settings tab. '
                'Should be defined as "%s".')
         if expected_xml_root:
             msg %= filename, expected_xml_root
