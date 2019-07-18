@@ -786,10 +786,10 @@ class Xlsform:
         inconsistent = has_save_instance ^ has_save_form
         if inconsistent:
             if has_save_instance:
-                m = '"{}" defines bind::save_instance value but no bind::save_form value'
+                m = '"{}" defines {save_instance} value but no {save_form} value'
             else:
-                m = '"{}" defines bind::save_form value but no bind::save_instance value'
-            raise XlsformError(m.format(filename))
+                m = '"{}" defines {save_form} value but no {save_instance} value'
+            raise XlsformError(m.format(filename, save_instance=constants.SAVE_INSTANCE, save_form=constants.SAVE_FORM))
 
     def version_consistency(self):
         version_re = r'[Vv](\d+)'
@@ -809,8 +809,8 @@ class Xlsform:
         if len(version) > 1:
             m = ('"{}" has inconsistent version numbers among XLSForm '
                  'filename, XML filename, form_id, form_title, entries in '
-                 'bind::save_form. Versions found: {}.')
-            m = m.format(self.path, ', '.join(version))
+                 '{}. Versions found: {}.')
+            m = m.format(self.path, constants.SAVE_FORM, ', '.join(version))
             raise XlsformError(m)
 
     def extra_undefined_column(self):

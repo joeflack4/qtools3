@@ -71,9 +71,9 @@ SETTINGS = 'settings'
 EXTERNAL_CHOICES = 'external_choices'
 EXTERNAL_TYPES = ['select_one_external', 'select_multiple_external']
 
-SAVE_INSTANCE = 'bind::save_instance'
-SAVE_FORM = 'bind::save_form'
-DELETE_FORM = 'bind::delete_form'
+SAVE_INSTANCE = 'bind::saveInstance'
+SAVE_FORM = 'bind::saveForm'
+DELETE_FORM = 'bind::deleteForm'
 TYPE = 'type'
 LIST_NAME = 'list_name'
 NAME = 'name'

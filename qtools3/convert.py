@@ -191,8 +191,8 @@ def validate_xpaths(xlsforms, xforms):
             not_found = [True] * len(this_save_instance)
             for save_form in this_save_form:
                 if save_form not in form_ids:
-                    m = '"{}" defines bind::save_form with non-existent form_id "{}"'
-                    m = m.format(xlsform.path, save_form)
+                    m = '"{}" defines {} with non-existent form_id "{}"'
+                    m = m.format(xlsform.path, constants.SAVE_FORM, save_form)
                     raise XformError(m)
                 else:
                     ind = form_ids.index(save_form)
@@ -284,14 +284,14 @@ def check_hq_fq_headers(xlsforms):
     fq = [xlsform for xlsform in xlsforms if xlsform.xml_root == 'FRS']
     for h in hq:
         if not len(h.save_instance) > 1 or not len(h.save_form) > 1:
-            m = ('HQ ({}) does not define both "bind::save_instance" and '
-                 '"bind::save_form" columns and their values')
-            m = m.format(h.short_file)
+            m = ('HQ ({}) does not define both "{}" and '
+                 '"{}" columns and their values')
+            m = m.format(h.short_file, constants.SAVE_INSTANCE, constants.SAVE_FORM)
             raise XlsformError(m)
     for f in fq:
         if not len(f.delete_form) > 1:
-            m = 'FQ ({}) missing "bind::delete_form" column and "true()" value'
-            m = m.format(f.short_file)
+            m = 'FQ ({}) missing "{}" column and "true()" value'
+            m = m.format(f.short_file, constants.DELETE_FORM)
             raise XlsformError(m)
 
 
@@ -327,9 +327,9 @@ def check_save_form_match(xlsforms):
     for xlsform in xlsforms:
         save_form = xlsform.save_form
         if len(save_form) > 1:
-            m = ('"{}" has more than one bind::save_form defined. Unpredictable '
+            m = ('"{}" has more than one {} defined. Unpredictable '
                  'behavior ahead!')
-            m = m.format(xlsform.path)
+            m = m.format(xlsform.path, constants.SAVE_FORM)
             msg.append(m)
         for form_id in save_form:
             if form_id not in all_form_ids:
