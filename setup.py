@@ -125,6 +125,7 @@ setup(
     entry_points={
         'console_scripts': [
             'qtools3=qtools3.convert:main',
+            'qtools3-gui=qtools3.gui:run_gui',
         ]
     },
 )
