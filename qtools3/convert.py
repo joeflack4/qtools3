@@ -84,7 +84,7 @@ def xlsform_convert(xlsxfiles, **kwargs):
         except XlsformError as e:
             error.append(str(e))
     if error:
-        header = 'The following {} error(s) prevent qtools2 from converting'
+        header = 'The following {} error(s) prevent qtools3 from converting'
         header = header.format(len(error))
         format_and_raise(header, error)
     successes = [xlsform_offline(xlsform, validate, extras) for xlsform in xlsforms]
